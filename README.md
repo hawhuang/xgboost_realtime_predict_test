@@ -6,4 +6,6 @@ xgboost在线预测
 
 参考： g++ -std=c++11 -o predict predict.cpp -L. -lxgboost -I/data/code/yourname/xgboost/rabit/include  
 
+sample：./predict 12345 2,0,0.0,0,0,0,1,0,0,0,0,0.0,0.0,0,25,1,0,0,0,0,2 xgboost.model2
+
 
