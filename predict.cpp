@@ -52,13 +52,13 @@ int main(int argc, char *argv[])
 
 {
 
-cout<<"begin"<<endl;	
+	cout<<"begin"<<endl;	
 
 	if(argc != 4)
 
 	{ 
 
-cout<<"wrong input"<<endl;
+		cout<<"wrong input"<<endl;
 
 		return 1; //参数不够
 
@@ -68,25 +68,25 @@ cout<<"wrong input"<<endl;
 
 	char *uin = argv[1];  //用户id
 
-//cout<<uin<<endl;
+	//cout<<uin<<endl;
 
 	char *char_character = argv[2];	   //用户特征序列，逗号隔开
 
-//cout<<char_character<<endl;
+	//cout<<char_character<<endl;
 
 	const char *fname = argv[3];       //模型文件路径
 
-//cout<<fname<<endl;
+	//cout<<fname<<endl;
 
 	vector<string> ivec;
 
-  string test_data=char_character;
+  	string test_data=char_character;
 
 
 
-//cout<<test_data<<endl;
+	//cout<<test_data<<endl;
 
-  split(test_data,',',ivec);    //解析用户特征，都逗号分隔，放入vector
+  	split(test_data,',',ivec);    //解析用户特征，都逗号分隔，放入vector
 
 	  int cols=ivec.size();
 
@@ -116,15 +116,15 @@ cout<<"wrong input"<<endl;
 
 		int sample_rows=1;
 
-  XGDMatrixCreateFromMat((float *) uin_data, sample_rows, cols, -1, &h_test[0]);
+	XGDMatrixCreateFromMat((float *) uin_data, sample_rows, cols, -1, &h_test[0]);
 
 	  XGBoosterCreate(h_test,1,&h_booster);
 
 	//      ret=XGBoosterLoadModelFromBuffer(h_booster,pbuf, iSize);
 
-int ret=XGBoosterLoadModel(h_booster,fname);  //加载模型
+	int ret=XGBoosterLoadModel(h_booster,fname);  //加载模型
 
-cout << uin <<" ,load:"<<ret<<endl;	       
+	cout << uin <<" ,load:"<<ret<<endl;	       
 
 	  XGBoosterPredict(h_booster, h_test[0], 0,0,&out_len,&f);  //预测
 
